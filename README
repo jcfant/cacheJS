@@ -1,0 +1,55 @@
+cacheJS, A Client Side caching tool
+==================================================
+
+cacheJS is a lightweight (721 bytes minified) client side caching tool. Used to 
+cache complex data structures. It will keep items in memory for as long as your app
+is running. Also, if you enable persistStorage, it will keep a copy in the HTML5 localStorage.
+
+Options
+------------
+By default, persistStorage is turned on. If you would like to turn it off:
+
+	<script type='text/javascript' src='/your/path/to/cacheJS.js'></script>	
+
+	cacheJS.options({ persistStorage : false });
+
+Example
+------------
+
+	<script type='text/javascript' src='/your/path/to/cacheJS.js'></script>
+	
+	SETTING DATA 
+	
+	// String
+	cacheJS.set("SOMEKEY", "works");
+	
+	// Boolean
+	cacheJS.set("SOMEKEY", true);
+	
+	// Number
+	cacheJS.set("SOMEKEY", 1);
+	
+	// Object
+	cacheJS.set("SOMEKEY", { some : "item" } );
+	
+	GETTING DATA
+	
+	cacheJS.get("SOMEKEY");
+	
+
+Environments
+------------
+
+cacheJS can be used as a Node module out of the box:
+
+    var CACHEJS = require("cacheJS.js").cacheJS;
+
+Tests
+-----
+
+To run tests you will need to install [node.js](http://nodejs.org/). 
+
+From the command line:
+
+	cd tests;
+	node runTests.js
