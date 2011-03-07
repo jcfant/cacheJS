@@ -36,6 +36,31 @@ Example
 	
 	cacheJS.get("SOMEKEY");
 	
+Usage
+------------
+
+Just an example on how I can see this being used.
+
+	function getUserData() {
+		// CHECK THE CACHE TO SEE IF WE HAVE ALREADY LOADED THIS DATA
+		// May already be set in local storage
+		
+		var data = cacheJS.get("USERDATA" + this.user);
+		if (typeof data === "undefined"){
+
+			$.ajax({
+				url: "/getUserData.json",
+				dataType : json,
+				success: function(data){
+				cacheJS.set("USERDATA" + this.user, data);
+				this.userData = data;
+			});
+	    }else{
+	        this.userData = data;
+	    }
+	};
+	
+	
 
 Environments
 ------------
