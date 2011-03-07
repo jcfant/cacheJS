@@ -1,6 +1,6 @@
 var sys = require('sys'),
     http = require('http'),
-    cacheJS = require('./cacheJS').cacheJS;
+    cacheJS = require('../cacheJS').cacheJS;
 
 	
 	var setTests = [
