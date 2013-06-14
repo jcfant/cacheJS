@@ -55,6 +55,22 @@
 				return cachejs;
 		};
 
+
+		/*
+		*
+		* Private cache object delete method.
+		*
+		* @name clearCache
+		* @private
+		* @param {String} key The key used to retrieve data
+		* @param {Integer} Time to delete the cache. 
+		*/
+        var clearCache = function(key, timeout){
+     
+            // clear cache
+            setTimeout(function() { delete cache[key]; }, timeout);
+        }; 
+
 		/**
 		 * Checks features to see if localStorage is enabled.
 		 *
@@ -126,11 +142,14 @@
 		 * @param {String} key The key used to retrieve data
 		 * @param {Object} the item set to the cache in memory, or the local storage version of the object
 		 */
-		cachejs.set = function(key, obj){
+		cachejs.set = function(key, obj, timeout){
 			cache[key] = obj;
 			if (baseOptions.useLocal){
 				setLocal(key, obj);
 			}
+
+			// If you have to delete the cache timeout.
+			if (timeout) clearCache(key, timeout);
 		};
 		
 		/**
